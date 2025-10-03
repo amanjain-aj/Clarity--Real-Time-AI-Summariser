@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Clarity – Real-Time AI Summarizer",
+  "version": "1.1.0",
+  "description": "Clarity uses on-device AI to summarize articles, PDFs, and YouTube videos in seconds. Private, fast, and distraction-free.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Clarity",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "bg.js"
+  },
+  "options_page": "options.html",
+  "trial_tokens": [
+"An3WXpuW11lbe1V17uL9xrYh/tOjLpTU1O1fHafkfqsXT/dlc/QIKgqL5mruN8GI3uN5dTcg0SkTo8QMPIF/wQgAAABseyJvcmlnaW4iOiJjaHJvbWUtZXh0ZW5zaW9uOi8va2NnZWpqbWxwZ2RlZ2licGdubWxpa2FramVjbGpoaGoiLCJmZWF0dXJlIjoiQUlXcml0ZXJBUEkiLCJleHBpcnkiOjE3Njk0NzIwMDB9",
+"Aq2NX1ObPL9HbJYWQD199DkaCR1Q9RTfeTu57bcKzkChTZRfZ7odXfgyBdTgnQZMSshc9t8WPs/azvnsJv5xgwgAAABueyJvcmlnaW4iOiJjaHJvbWUtZXh0ZW5zaW9uOi8va2NnZWpqbWxwZ2RlZ2licGdubWxpa2FramVjbGpoaGoiLCJmZWF0dXJlIjoiQUlSZXdyaXRlckFQSSIsImV4cGlyeSI6MTc2OTQ3MjAwMH0=",
+"AuQFDKwI7U9jk7Uuh320y9losPOQrYRA3tuda0B8qbs0tA/4ikT3IlJGygNUrWVv9Mk7nC1/zcXGcHyzArhKBwEAAABzeyJvcmlnaW4iOiJjaHJvbWUtZXh0ZW5zaW9uOi8va2NnZWpqbWxwZ2RlZ2licGdubWxpa2FramVjbGpoaGoiLCJmZWF0dXJlIjoiQUlTdW1tYXJpemF0aW9uQVBJIiwiZXhwaXJ5IjoxNzYwNDAwMDAwfQ==",
+"An9yY8JCSgVNrnHgmQQVUslow0zvsjlnsfChUfT/Drftp2RrvOaoK57M/rz/UmUl7Uevd3fJ+au2aT6gEp690QcAAAB7eyJvcmlnaW4iOiJjaHJvbWUtZXh0ZW5zaW9uOi8va2NnZWpqbWxwZ2RlZ2licGdubWxpa2FramVjbGpoaGoiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDB9"
+  ]
+}

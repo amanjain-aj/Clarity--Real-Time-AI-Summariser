@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Clarity – Real-Time AI Summarizer</title>
+  <meta name="description" content="Clarity uses on-device AI to summarize articles, PDFs, and YouTube videos in seconds. Private, fast, and distraction-free.With Clarity you can get the gist of any page, article, or video — instantly.">
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    // Tailwind-like minimal theme toggle using CSS vars; avoids external CDN in extension context
+    (function(){
+      const theme = (localStorage.getItem('theme')||'dark');
+      document.documentElement.classList.toggle('theme-light', theme==='light');
+    })();
+  </script>
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="brand">
+        <img src="clarity.svg" alt="Clarity" />
+        <span>Clarity – Real-Time AI Summarizer</span>
+      </div>
+      <div class="header-actions">
+        <button id="btn-history" class="icon-btn" title="History">🕘</button>
+        <button id="btn-settings" class="icon-btn" title="Settings">⚙️</button>
+        <button id="btn-theme" class="icon-btn" title="Toggle theme">🌓</button>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="summarize">Summarize</button>
+      <button class="tab" data-tab="ask">Ask</button>
+      <button class="tab" data-tab="write">Write</button>
+      <button class="tab" data-tab="rewrite">Rewrite</button>
+    </nav>
+
+    <section id="panel-summarize" class="panel active">
+      <div class="row">
+        <label>Style
+          <select id="mode">
+            <option value="keypoints">Key Points</option>
+            <option value="tldr">TL;DR</option>
+            <option value="paragraph">Paragraph</option>
+          </select>
+        </label>
+        <label>Length
+          <select id="length">
+            <option value="short">Short</option>
+            <option value="medium" selected>Medium</option>
+            <option value="long">Long</option>
+          </select>
+        </label>
+      </div>
+      <button id="btn-run-summarize" class="primary">Summarize this page</button>
+    </section>
+
+    <section id="panel-ask" class="panel">
+      <textarea id="ask-input" class="textarea" placeholder="Ask a question about this page..."></textarea>
+      <button id="btn-run-ask" class="primary">Ask</button>
+    </section>
+
+    <section id="panel-write" class="panel">
+      <textarea id="write-input" class="textarea" placeholder="Describe what to write..."></textarea>
+      <div class="row">
+        <label>Tone
+          <select id="tone">
+            <option value="neutral" selected>Neutral</option>
+            <option value="teaching">Teaching</option>
+            <option value="persuasive">Persuasive</option>
+            <option value="friendly">Friendly</option>
+          </select>
+        </label>
+        <label>Length
+          <select id="write-length">
+            <option value="short">Short</option>
+            <option value="medium" selected>Medium</option>
+            <option value="long">Long</option>
+          </select>
+        </label>
+      </div>
+      <button id="btn-run-write" class="primary">Write</button>
+    </section>
+
+    <section id="panel-rewrite" class="panel">
+      <textarea id="rewrite-input" class="textarea" placeholder="Paste text to rewrite..."></textarea>
+      <div class="row">
+        <label>Goal
+          <select id="rewrite-goal">
+            <option value="as-is" selected>As-is</option>
+            <option value="shorter">Shorter</option>
+            <option value="clearer">Clearer</option>
+            <option value="friendlier">Friendlier</option>
+          </select>
+        </label>
+      </div>
+      <button id="btn-run-rewrite" class="primary">Rewrite</button>
+    </section>
+
+    <section class="output">
+      <div class="output-toolbar">
+        <button id="btn-copy" class="ghost">Copy</button>
+        <button id="btn-export" class="ghost">Export .md</button>
+      </div>
+      <div id="status" class="status hidden"></div>
+      <div class="progress hidden"><div id="progress-bar"></div></div>
+      <article id="result" class="result"></article>
+    </section>
+
+    <dialog id="history-dialog">
+      <header class="dialog-header">
+        <h3>History</h3>
+        <button id="close-history" class="icon-btn" aria-label="Close">✕</button>
+      </header>
+      <div id="history-list" class="history-list"></div>
+    </dialog>
+
+    <dialog id="settings-dialog">
+      <header class="dialog-header">
+        <h3>Settings</h3>
+        <button id="close-settings" class="icon-btn" aria-label="Close">✕</button>
+      </header>
+      <div class="settings-body">
+        <label><input type="checkbox" id="use-readability" checked /> Use enhanced article extraction</label>
+        <label><input type="checkbox" id="prefer-yt" checked /> Prefer YouTube transcript on watch pages</label>
+        <p class="hint">Writer/Rewriter require an origin-trial token in manifest.json.</p>
+      </div>
+      <footer class="dialog-footer">
+        <button id="save-settings" class="primary">Save</button>
+      </footer>
+    </dialog>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
